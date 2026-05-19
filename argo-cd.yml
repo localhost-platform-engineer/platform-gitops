@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/localhost-platform-engineer/platform-gitops
     targetRevision: main
-    path: apps
+    path: ./
 
   destination:
     server: https://kubernetes.default.svc
