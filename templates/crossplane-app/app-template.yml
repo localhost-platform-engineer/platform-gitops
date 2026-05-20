@@ -1,0 +1,42 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+
+metadata:
+  name: create-crossplane-app
+  title: Create Crossplane App
+  description: Deploy an application using Crossplane
+
+spec:
+  owner: platform-team
+  type: service
+
+  parameters:
+    - title: App Details
+      required:
+        - name
+        - image
+
+      properties:
+        name:
+          type: string
+          title: Application Name
+
+        image:
+          type: string
+          title: Container Image
+          default: nginx
+
+  steps:
+    - id: fetch-base
+      name: Generate App YAML
+      action: fetch:template
+      input:
+        targetPath: ./generated
+        values:
+          name: ${{ parameters.name }}
+          image: ${{ parameters.image }}
+
+  output:
+    text:
+      - title: Success
+        content: App manifest generated successfully

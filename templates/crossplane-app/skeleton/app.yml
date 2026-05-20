@@ -1,0 +1,9 @@
+apiVersion: example.crossplane.io/v1
+kind: App
+
+metadata:
+  namespace: default
+  name: ${{ values.name }}
+
+spec:
+  image: ${{ values.image }}
